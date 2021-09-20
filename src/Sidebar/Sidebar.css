@@ -35,7 +35,6 @@
 .sidebarImg {
   margin-top: 15px;
   width: 250px;
-  
 }
 
 .sidebarItem >p {
@@ -51,7 +50,7 @@
   /* make in a one line block */
   display: inline-block; 
   /* divide that one line-block into 50%  */
-  widows: 50%;
+  width: 50%;
   margin-top: 15px;
   cursor: pointer;
 }
@@ -68,5 +67,4 @@
   font-size: 16px;
   margin-left: 10px;
   cursor: pointer;
-
 }

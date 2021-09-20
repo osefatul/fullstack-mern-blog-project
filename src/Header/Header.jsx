@@ -8,8 +8,8 @@ function Header() {
         <span className="headerTitleSm">
           THE GREATEST
         </span>
-        <span className="headerTitleLg">AFGHANISTAN</span>
-        <img className="backgroundImg" src="https://cdn.wallpapersafari.com/26/4/8w5aYj.jpg" />
+        <h1 className="headerTitleLg"> AFGHANISTAN</h1>
+        <img className="backgroundImg" src={afg} />
       </div>
     </div>
   )
