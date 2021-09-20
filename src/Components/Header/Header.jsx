@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Header.css"
-import afg from "../afg.jpg"
+import afg from "../../afg.jpg"
 function Header() {
   return (
     <div className="header">
