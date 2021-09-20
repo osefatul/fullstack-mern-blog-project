@@ -7,6 +7,9 @@
   display: flex;
   align-items: center;
   font-family: 'Josefin Sans', sans-serif;
+
+  /* if we scroll down we can see the html elements are kind of visible under the header so to make them invisible when scrolling down */
+  z-index: 999;
 }
 
 .topLeft,.topRight{
