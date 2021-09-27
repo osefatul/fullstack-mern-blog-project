@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+//schema is actually the strucure we are making in the mongoDB.
+
 const UserSchema = new mongoose.Schema(
   {
     username: {

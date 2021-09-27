@@ -56,6 +56,10 @@
 	- Allows to set up middlewares to respond to HTTP Requests.
 	- Defines a routing table which is used to perform different actions based on HTTP Method and URL.
 	- Allows to dynamically render HTML Pages based on passing arguments to templates.
- 
+
+ ### Postman
+ This is a software that we are using actually for the server side router or HTTP request. we are going to use for GET, POST, UPDATE, DELETE and USE requests so we can see what we are receiving in the req.body
+ we also have the postman agent for the client side testing of the web server.
+
  ### bcrypt
  we are using this library so the password that is posting in the database should be encrypted.

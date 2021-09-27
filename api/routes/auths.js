@@ -26,7 +26,7 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     // The findOne() function is used to find one document according to the condition. If multiple documents match the condition, then it returns the first document satisfying the condition.
-    const user = User.findOne({ username: req.body.username });
+    const user = await User.findOne({ username: req.body.username });
     !user && res.status(400).json("Wrong Credential !"); // if there is not user found
 
     //compare the hashed stored password with the password that has been written in the body by user
