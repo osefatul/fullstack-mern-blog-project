@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./topbar.css";
 function Topbar() {
-  const user = false;
+  const user = true;
   return (
     <div className="top">
       <div className="topLeft">
@@ -29,7 +29,7 @@ function Topbar() {
             </Link>
           </li>
           <li className="topListItem">
-            <Link className="link" to="/">
+            <Link className="link" to="/write">
               WRITER
             </Link>
           </li>
