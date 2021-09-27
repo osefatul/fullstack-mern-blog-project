@@ -19,3 +19,32 @@
  After connection to MongoDB, we created models - POST,CATEGORY AND USER, and Routes - post,categories,user and authentication.
 
  
+ #### MongoDB
+ MongoDB is a database that stores your data as documents. Most commonly these documents resemble a JSON-like structure.
+ 
+ #### What Is Mongoose?
+ Mongoose is an Object Document Mapper (ODM). This means that Mongoose allows you to define objects with a strongly-typed schema that is mapped to a MongoDB document.
+ Mongoose provides an incredible amount of functionality around creating and working with schemas. Mongoose currently contains eight SchemaTypes that a property is saved as when it is persisted to MongoDB. They are:
+
+ - String
+ - Number
+ - Date
+ - Buffer
+ - Boolean
+ - Mixed
+ - ObjectId
+ - Array
+
+ Each data type allows you to specify:
+
+ - a default value
+ - a custom validation function
+ - indicate a field is required
+ - a get function that allows you to manipulate the data before it is returned as an object
+ - a set function that allows you to manipulate the data before it is saved to the database
+ - create indexes to allow data to be fetched faster
+
+ For further study and details visit:
+	- https://medium.com/chingu/an-overview-of-mongodb-mongoose-b980858a8994
+	- https://code.tutsplus.com/articles/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527
+ 
