@@ -8,3 +8,5 @@
 	- #### Register: this page is used for registering.
 	- #### Settings: this page is used to update settings as u want.
 	- #### Single: this page is used for a single post, so we can get track of the postID.
+
+## Rest API with MongoDB
