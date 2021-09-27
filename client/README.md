@@ -19,10 +19,10 @@
  After connection to MongoDB, we created models - POST,CATEGORY AND USER, and Routes - post,categories,user and authentication.
 
  
- #### MongoDB
+ ### MongoDB
  MongoDB is a database that stores your data as documents. Most commonly these documents resemble a JSON-like structure.
  
- #### What Is Mongoose?
+ ### What Is Mongoose?
  Mongoose is an Object Document Mapper (ODM). This means that Mongoose allows you to define objects with a strongly-typed schema that is mapped to a MongoDB document.
  Mongoose provides an incredible amount of functionality around creating and working with schemas. Mongoose currently contains eight SchemaTypes that a property is saved as when it is persisted to MongoDB. They are:
 
@@ -45,6 +45,17 @@
  - create indexes to allow data to be fetched faster
 
  For further study and details visit:
+
 	- https://medium.com/chingu/an-overview-of-mongodb-mongoose-b980858a8994
 	- https://code.tutsplus.com/articles/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527
  
+
+ ### Express
+ Express is a minimal and flexible Node.js web application framework that provides a robust set of features to develop web and mobile applications. It facilitates the rapid development of Node based Web applications. Following are some of the core features of Express framework −
+
+	- Allows to set up middlewares to respond to HTTP Requests.
+	- Defines a routing table which is used to perform different actions based on HTTP Method and URL.
+	- Allows to dynamically render HTML Pages based on passing arguments to templates.
+ 
+ ### bcrypt
+ we are using this library so the password that is posting in the database should be encrypted.
