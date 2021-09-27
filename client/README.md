@@ -1,4 +1,5 @@
 # Full-Stack MERN Blog
+
 ## Creating Blog from the Scratch
  We have use ReactJs, NodeJs, Node-Api, React Hooker and many more packages.
  - We have created first multiple pages, as each page is composed of react component
@@ -15,4 +16,6 @@
 	- env: in the env file of api we saved the link of connection that we got from the cluster.
  
  In order to understand mongoose in details click on the link https://mongoosejs.com/docs/connections.html
- After connection to MongoDB, we created models - POST,CATEGORY AND USER, and Routes - post,categories,user and authentication
+ After connection to MongoDB, we created models - POST,CATEGORY AND USER, and Routes - post,categories,user and authentication.
+
+ 
