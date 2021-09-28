@@ -70,6 +70,7 @@
 
 ### routes/:id
  In the routes/Users, to update and delete users we used - router.PUT("/:id") - mehtod, where "/:id" will indicate the user id.  "req.params.id", means if the id in the URL parameter of "users/id" for example:  localhost:/5000/api/users/1234987986 -- is same as in the request of the body:
+
  	1 - First, Check the userId that a user is giving in the body and compare it to the URL/userId or the params.id.
 	2 - Second, if the userId is right then change the new password given by the user with the old ones.
 	3 - Third, update the user account with all the information that user is giving in the body, using the userId.
