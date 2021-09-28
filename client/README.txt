@@ -66,4 +66,5 @@
 
 
  ### routes/auths
- Here, we used two things. if there is no user in the DB we will register the user and store its info using POST("/register") method. and also  
+ Here, we used two things. if there is no user in the DB we will register the user and store its info using POST("/register") method, for the user that already exist we used a POST("/login") 
+
