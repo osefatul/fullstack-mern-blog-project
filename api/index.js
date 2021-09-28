@@ -1,16 +1,18 @@
 const express = require("express");
 const app = express();
-
-//Import the library from the dotenec so we can hide the url we are using for the http
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+
+//Routes
 const authRoute = require("./routes/auths");
+const userRoute = require("./routes/users");
 
 dotenv.config();
 
 //express. json() is a method inbuilt in express to recognize the incoming Request Object as a JSON Object.
 app.use(express.json());
 app.use("/api/auths", authRoute);
+app.use("/api/users/", userRoute);
 
 mongoose
   .connect(process.env.MONGO_URL)
