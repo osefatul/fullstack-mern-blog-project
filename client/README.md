@@ -69,7 +69,7 @@
  Here, we used two things. if there is no user in the DB we will register the user and store its info using POST("/register") method, for the user that already exist we used a POST("/login") 
 
 ### routes/:id
- In the routes/Users, to update and delete users we used - router.PUT("/:id") - mehtod, where "/:id" will indicate the user id.  "req.params.id", means if the id in the URL parameter of "users/id" for example:  localhost:/5000/api/users/1234987986 -- is same as in the request of the body:
+ In the routes/Users, to update users we used - router.PUT("/:id") - mehtod, where "/:id" will indicate the user id.  "req.params.id", means if the id in the URL parameter of "users/id" for example:  localhost:/5000/api/users/1234987986 -- is same as in the request of the body:
 
  	1 - First, Check the userId that a user is giving in the body and compare it to the URL/userId or the params.id.
 	2 - Second, if the userId is right then change the new password given by the user with the old ones.
