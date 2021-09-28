@@ -86,13 +86,13 @@
 
 - To Delete a user: we almost do the same process as we did with update, however, we are deleting the user posts as well:
 
-	1- Find a user by ID from the URL
-	2- If the user is there then Try to Delete Post first as the parameter should be the object where the username in the post should match with the username that was found in User model from URL params.
-	3- Delete the user given the ID from the URL params
+	1 - Find a user by ID from the URL
+	2 - If the user is there then Try to Delete Post first as the parameter should be the object where the username in the post should match with the username that was found in User model from URL params.
+	3 - Delete the user given the ID from the URL params
 
 - To Get a user: Same process: the URL should be - localhost:/5000/api/auth/users/id
 	
-	1- provide username, email and password, once we retrieve th information we ignore or hide the password using:  const {password, ...others} = user._doc
+	1 - provide username, email and password, once we retrieve th information we ignore or hide the password using:  const {password, ...others} = user._doc
 
 
 
@@ -111,9 +111,9 @@
 
 - To Delete a user: we almost do the same process as we did with update, however, we are deleting the post:
 
-	1- Find the post by ID from the URL
-	2- If the username in the post is same as the one in the body, then Try to Delete Post directly.
-	3- Send the update to user.
+	1 - Find the post by ID from the URL
+	2 - If the username in the post is same as the one in the body, then Try to Delete Post directly.
+	3 - Send the update to user.
 
 - To Get a user: Same process: the URL should be - localhost:/5000/api/auth/users/id
 	
