@@ -66,6 +66,8 @@
 
 
 ### routes/auths
+ In the routes/Users file using URL of: localhost:/5000/api/auths/register or login
+
  Here, we used two things. if there is no user in the DB we will register the user and store its info using POST("/register") method, for the user that already exist we used a POST("/login") 
 	
 	1 - In the Registeration process: POST mehtod is used and we provide three things -- username, email, password.
@@ -73,32 +75,49 @@
 	3 - In the Login process, POST method is used -- we provide username and password,
 
 
-### routes/:id
- In the routes/Users, to Update users we used - router.PUT("/:id") - mehtod, where "/:id" will indicate the user id.  "req.params.id", means if the id in the URL parameter of "users/id" for example:  localhost:/5000/api/users/1234987986 -- is same as in the request of the body:
+### routes/users
+ In the routes/users file using URL of: localhost:/5000/api/users/:id.
+ 
+-  To Update users we used - router.PUT("/:id") - mehtod, where "/:id" will indicate the user id.  "req.params.id", means if the id in the URL parameter of "users/id" for example:  localhost:/5000/api/users/1234987986 -- is same as in the request of the body:
 
  	1 - First, Check the userId that a user is giving in the body and compare it to the URL/userId or the params.id.
 	2 - Second, if the userId is right then change the new password given by the user with the old ones.
 	3 - Third, update the user account with all the information that user is giving in the body, using the userId.
 
- To Delete a user: we almost do the same process as we did with update, however, we are deleting the user posts as well:
+- To Delete a user: we almost do the same process as we did with update, however, we are deleting the user posts as well:
 
 	1- Find a user by ID from the URL
 	2- If the user is there then Try to Delete Post first as the parameter should be the object where the username in the post should match with the username that was found in User model from URL params.
 	3- Delete the user given the ID from the URL params
 
-
-To Get a user: Same process: the URL should be - localhost:/5000/api/auth/users/id
+- To Get a user: Same process: the URL should be - localhost:/5000/api/auth/users/id
 	
 	1- provide username, email and password, once we retrieve th information we ignore or hide the password using:  const {password, ...others} = user._doc
 
 
 
 
+### routes/posts
+ In the routes/posts file using URL of: localhost:/5000/api/posts
+
+- To Create a Post, we create a new object from the Post model. and then save everythin (that is given in the body based on the information of Post schema) in that newly created object. you can access that save the post in the database, minimum using username, title and desc properties. We know this because in the Post model we have created a schecma where desc and username is required.
+
+- To Update a Post, we used - router.post("/:id") - mehtod, where "/:id" will indicate the post Id.  "req.params.id", means if the id in the URL parameter of "posts/id" for example:  localhost:/5000/api/posts/1234987986 -- is same as the requested username's id then:
+
+ 	1 - First, Check the userId that a username is giving in the body and find its id and compare it to the URL/postId or the params.id.
+	2 - Second, if the postId is right then update the everything given by the user with the old ones.
+	3 - Third, update the post  with all the information that user is giving in the body.
 
 
+- To Delete a user: we almost do the same process as we did with update, however, we are deleting the post:
 
+	1- Find the post by ID from the URL
+	2- If the username in the post is same as the one in the body, then Try to Delete Post directly.
+	3- Send the update to user.
 
-
+- To Get a user: Same process: the URL should be - localhost:/5000/api/auth/users/id
+	
+	- only provide post Id in the URL parameter.
 
 
 

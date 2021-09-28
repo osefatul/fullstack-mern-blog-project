@@ -48,6 +48,8 @@ router.delete("/:id", async (req, res) => {
         } catch (err) {
           res.status(500).json(err);
         }
+      } else {
+        res.status(401).json("USER NOT FOUND !");
       }
     } catch (err) {
       res.status(401).json("User not Found");
