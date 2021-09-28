@@ -19,10 +19,10 @@
  After connection to MongoDB, we created models - POST,CATEGORY AND USER, and Routes - post,categories,user and authentication.
 
  
- ### MongoDB
+### MongoDB
  MongoDB is a database that stores your data as documents. Most commonly these documents resemble a JSON-like structure.
  
- ### What Is Mongoose?
+### What Is Mongoose?
  Mongoose is an Object Document Mapper (ODM). This means that Mongoose allows you to define objects with a strongly-typed schema that is mapped to a MongoDB document.
  Mongoose provides an incredible amount of functionality around creating and working with schemas. Mongoose currently contains eight SchemaTypes that a property is saved as when it is persisted to MongoDB. They are:
 
@@ -50,20 +50,24 @@
 	- https://code.tutsplus.com/articles/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527
  
 
- ### Express
+### Express
  Express is a minimal and flexible Node.js web application framework that provides a robust set of features to develop web and mobile applications. It facilitates the rapid development of Node based Web applications. Following are some of the core features of Express framework −
 
 	- Allows to set up middlewares to respond to HTTP Requests.
 	- Defines a routing table which is used to perform different actions based on HTTP Method and URL.
 	- Allows to dynamically render HTML Pages based on passing arguments to templates.
 
- ### Postman
+### Postman
  This is a software that we are using actually for the server side router or HTTP request. we are going to use for GET, POST, UPDATE, DELETE and USE requests so we can see what we are receiving in the req.body
  we also have the postman agent for the client side testing of the web server.
 
- ### bcrypt
+### bcrypt
  we are using this library so the password that is posting in the database should be encrypted.
 
 
- ### routes/auths
- Here, we used two things. if there is no user in the DB we will register the user and store its info using POST("/register") method. and also  
+### routes/auths
+ Here, we used two things. if there is no user in the DB we will register the user and store its info using POST("/register") method, for the user that already exist we used a POST("/login") 
+
+### routes/:id
+ In the routes/Users, to update and delete users we used - router.PUT("/:id") - mehtod, where "/:id" will indicate the user id.  "req.params.id", means if the id in the URL parameter of "users/id" for example:  localhost:/5000/api/users/1234987986 -- is same as in the request of the body:
+
