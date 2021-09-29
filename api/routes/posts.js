@@ -58,8 +58,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-//GET
-
+//GET one Post
 router.get("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -69,4 +68,27 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+//GET all post
+router.get("/", async (req, res) => {
+  // ?user = <any name> this is how we query in the params
+  const username = req.query.user;
+  const catName = req.query.cat;
+  try {
+    // we are using this bevause we want it to be changeable
+    let posts;
+
+    if (username) {
+      posts = await Post.find({ username });
+    } else if (catName) {
+      //look up this categories array and inside if you find this catName then return this posts
+      posts = await Post.find({ categories: { $in: [catName] } });
+    } else {
+      //just find all posts
+      posts = await Post.find({});
+    }
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;

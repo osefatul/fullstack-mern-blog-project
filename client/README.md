@@ -109,15 +109,24 @@
 	3 - Third, update the post  with all the information that user is giving in the body.
 
 
- To Delete a user: we almost do the same process as we did with update, however, we are deleting the post:
+ To Delete a post: we almost do the same process as we did with update, however, we are deleting the post:
 
 	1 - Find the post by ID from the URL
 	2 - If the username in the post is same as the one in the body, then Try to Delete Post directly.
 	3 - Send the update to user.
 
- To Get a user: Same process: the URL should be - localhost:/5000/api/auth/users/id
+ To Get a post: same process: the URL should be - localhost:/5000/api/auth/users/id
 	
 	- only provide post Id in the URL parameter.
+
+
+To Get all posts, or a categorical post that belong to one group or a user. we use QUERY in URL that is indicator of - req.query.<queryname> - the use of query is as below:
+
+	1 - Syntax:  URL?categoryName=<searching in the category>
+	2-  localhost:5000/api/posts?user=omar
+
+
+
 
 
 
