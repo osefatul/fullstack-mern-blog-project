@@ -129,6 +129,11 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
 
 
 
+### routes/categories
+ In the routes/categories file using URL of: localhost:/5000/api/categories
+
+ To Create a Category, we create a new object from the Category model. and then save everythin (that is given in the body based on the information of Category schema) in that newly created object. you can access that save the category in the database, using <name>. We know this because in the Category model we have created a schecma where only "name" is required.
+
 
 
 
