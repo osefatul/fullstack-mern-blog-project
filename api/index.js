@@ -12,6 +12,16 @@ const categoryRoute = require("./routes/categories");
 
 dotenv.config();
 
+//This code snippet, however, would enable CORS for all resources on your server.
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 //express. json() is a method inbuilt in express to recognize the incoming Request Object as a JSON Object.
 app.use(express.json());
 app.use("/api/auths", authRoute);
