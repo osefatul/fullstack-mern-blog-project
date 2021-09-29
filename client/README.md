@@ -14,6 +14,7 @@
  We used express for server, mongoose for linking mongoDB with the backend, env for all those url to hide.
 	- mongoDB: we used atlasMDB for databas and users. create a new cluster and user account.
 	- env: in the env file of api we saved the link of connection that we got from the cluster.
+	- multer: nodeJs library to upload file.. generally we use firebase or amazon s3 .... but here we will use multer to upload file from locally 
  
  In order to understand mongoose in details click on the link https://mongoosejs.com/docs/connections.html
  After connection to MongoDB, we created models - POST,CATEGORY AND USER, and Routes - post,categories,user and authentication.
@@ -135,6 +136,21 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
  To Create a Category, we create a new object from the Category model. and then save everythin (that is given in the body based on the information of Category schema) in that newly created object. you can access that save the category in the database, using <name>. We know this because in the Category model we have created a schecma where only "name" is required.
 
 
+
+
+
+### multer
+ We are using this library for uploading files.
+
+ There are some steps for that:
+	
+	1 - First we created an image folder in the api directory and saved an image there, our files will be uploaded from this "image" directory.
+	2 - In the index file create a storage for uploading file using multer library. in the object as a parameter of it we used "distanation" and its name as a callback. the other one is used for file name to be uploaded. We typically take the file name from the user, using - req.body.name -
+	3 - To upload a file, we used multer library passing the above defined storage in the parameter.
+	4 - To make it happen, execute a post method. where the middleware is the above upload variable where the file is stored and the callback function will send a json file for saying the file is uploaded successfully.
+	5 - In the Postman, go to the link: localhost:5000/api/upload
+	6 - If we are getting file name from the body then in the body write - {"name":"<filename>"}
+	7 - However, to upload the file, the body should be in the "form-data" select file as a key and in the value choose the file form the api/images directory. and then send the request 
 
 
 
