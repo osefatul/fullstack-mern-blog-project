@@ -154,14 +154,11 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
 
 
 
-
-
-
 ## Connnecting Rest API and MongoDB (Backend) to React (Frontend)
  
  - To fetch data we used Axios library
  - Go to package.json and at the end add "proxy":"http://localhost:5000/api"
- - Make sure to enable CORS: This post shows how to enable Cross Origin Resource Sharing (CORS) in Node. CORS essentially means cross-domain requests. https://dzone.com/articles/cors-in-node
+ - Make sure to enable CORS: This post shows how to enable Cross Origin Resource Sharing (CORS) in Node. CORS essentially means cross-domain requests. for example we are using different domains for client (localhost:3000) and API (localhost:5000)https://dzone.com/articles/cors-in-node
  - We added CORS enabling snippet in the index.js in the client side
 
 
