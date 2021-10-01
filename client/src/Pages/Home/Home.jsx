@@ -7,13 +7,13 @@ import axios from "axios";
 function Home() {
   const [posts, setPosts] = useState([]);
 
-  const fetchPost = async () => {
-    //make sure you added proxy in the package.json
-    const res = await axios.get("http://localhost:5000/api/posts");
-    console.log(res);
-  };
-
   useEffect(() => {
+    const fetchPost = async () => {
+      //make sure you added proxy in the package.json
+      const res = await axios.get("http://localhost:5000/api/posts");
+      console.log(res);
+      setPosts(res.data);
+    };
     fetchPost();
   }, []);
 
@@ -21,7 +21,7 @@ function Home() {
     <>
       <Header />
       <div className="home">
-        <Posts />
+        <Posts posts={posts} />
         <Sidebar />
       </div>
     </>

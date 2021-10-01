@@ -1,27 +1,27 @@
-import React from 'react'
-import "./Post.css"
-function post() {
+import React from "react";
+import "./Post.css";
+import { Link } from "react-router-dom";
+
+function post({ post }) {
   return (
     <div className="post">
-      <img className="postImg" src="https://c4.wallpaperflare.com/wallpaper/434/522/370/afghanistan-mosque-landscape-wallpaper-preview.jpg" alt="" />
+      {post.photo && <img className="postImg" src={post.photo} alt="" />}
+
       <div className="postInfo">
         <div className="postCats">
-          <span className="postCat">Music</span>
-          <span className="postCat">Life</span>
+          {post.categories.map((category) => (
+            <span className="postCat">{category.name}</span>
+          ))}
         </div>
-        <p className="postTitle">
-          Lorem ipsum dolor
-        </p>
+        <Link className="link" to={`/post/${post._id}`}>
+          <p className="postTitle">{post.title}</p>
+        </Link>
         <hr />
-        <p className="postDate">1 hour ago</p>
-        <p className="postDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ducimus quia corporis enim ad? Dolore, porro rerum amet unde animi minus veniam dolorum quod debitis illum facilis, iusto, dolorem dicta.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ducimus quia corporis enim ad? Dolore, porro rerum amet unde animi minus veniam dolorum quod debitis illum facilis, iusto, dolorem dicta.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ducimus quia corporis enim ad? Dolore, porro rerum amet unde animi minus veniam dolorum quod debitis illum facilis, iusto, dolorem dicta.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ducimus quia corporis enim ad? Dolore, porro rerum amet unde animi minus veniam dolorum quod debitis illum facilis, iusto, dolorem dicta.
-        </p>
+        <p className="postDate">{new Date(post.createdAt).toDateString()}</p>
+        <p className="postDesc">{post.desc}</p>
       </div>
     </div>
-  )
+  );
 }
 
-export default post
+export default post;
