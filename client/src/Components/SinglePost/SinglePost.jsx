@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import "./SinglePost.css";
+import axios from "axios";
 
 function SinglePost() {
+  const location = useLocation();
+  //console.log(location.pathname.split("/")[2]); //get the id from the link
+  const path = location.pathname.split("/")[2];
+  const [post, setPost] = useState({});
+
+  useEffect(() => {
+    const getPost = async () => {
+      const res = await axios.get("http://localhost:5000/api/posts/" + path);
+      //console.log(res.data);
+      setPost(res.data);
+    };
+    getPost();
+  }, [path]);
+
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        <img
-          className="singlePostImg"
-          src="https://c4.wallpaperflare.com/wallpaper/123/449/77/5bd48d091dc95-wallpaper-preview.jpg"
-          alt=""
-        />
+        {post.photo && (
+          <img className="singlePostImg" src={post.photo} alt="" />
+        )}
+
         <h1 className="singlePostTitle">
-          Lorem Ipsum Dollor sit amet
+          {post.title}
           <div className="singlePostEdit">
             <i class="singlePostIcon far fa-edit"></i>
             <i class="singlePostIcon far fa-trash-alt"></i>
@@ -20,25 +35,13 @@ function SinglePost() {
 
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
-            Author: <b>Sefat</b>
+            Author: <b>{post.username}</b>
           </span>
-          <span className="singlePostDate">1 hour ago</span>
+          <span className="singlePostDate">
+            {new Date(post.createdAt).toDateString()}
+          </span>
         </div>
-        <p className="singePostDesc">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-          voluptates totam accusamus natus modi quo nulla ipsa dicta a iste
-          excepturi debitis eligendi omnis, hic, quos, nisi explicabo
-          necessitatibus. Atque! Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Fugiat voluptates totam accusamus natus modi quo
-          nulla ipsa dicta a iste excepturi debitis eligendi omnis, hic, quos,
-          nisi explicabo necessitatibus. Atque! Lorem, ipsum dolor sit amet
-          consectetur adipisicing elit. Fugiat voluptates totam accusamus natus
-          modi quo nulla ipsa dicta a iste excepturi debitis eligendi omnis,
-          hic, quos, nisi explicabo necessitatibus. Atque! Lorem, ipsum dolor
-          sit amet consectetur adipisicing elit. Fugiat voluptates totam
-          accusamus natus modi quo nulla ipsa dicta a iste excepturi debitis
-          eligendi omnis, hic, quos, nisi explicabo necessitatibus. Atque!
-        </p>
+        <p className="singePostDesc">{post.desc}</p>
       </div>
     </div>
   );

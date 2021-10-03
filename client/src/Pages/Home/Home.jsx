@@ -6,14 +6,15 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 import axios from "axios";
 function Home() {
   const [posts, setPosts] = useState([]);
+  const fetchPost = async () => {
+    //make sure you added proxy in the package.json
+    const res = await axios.get("http://localhost:5000/api/posts");
+
+    //console.log(res);
+    setPosts(res.data);
+  };
 
   useEffect(() => {
-    const fetchPost = async () => {
-      //make sure you added proxy in the package.json
-      const res = await axios.get("http://localhost:5000/api/posts");
-      console.log(res);
-      setPosts(res.data);
-    };
     fetchPost();
   }, []);
 
