@@ -173,18 +173,18 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
   - Fetch data from the "http://localhost:5000/api/categories" and show all the categories that exists in the sidebar.
 
 
-### Woking on Fetching Data from the Author.
+### Woking on Fetching Data from the Author
   
   - Go to Home and use useLocation again, in the useLocation there is a method "search" where it gives you the params for query. we used that one for query of user.
   - Updated the fetchpost with adding + search. and also updated the useEffect with search variable. if we dont use "search", the link not gonna let us search the parameter we want which for example user=username. we add "search" because it will fecth whatever we query from API. it is mandatory.
+  - Remember we already defined "user" for query in the postsJs routes --> req.query.user 
   - Now, whenever we click on Author it will fetch data as "http:localhost:3000?user=post.username".. where localhost:3000 is linked with localhost:5000/api/posts domain for the API feching.
   - So, so localhost:3000?user=username is equal to localhost:5000/api/posts?user=username
   - In the Singel post we also update the Author and add a Link where it directs us to "/?user=${post.username}".. remember this will direct it to localhost:3000?user=username...as "/" or localhost:3000 === localhost:5000/api/posts?user=post.username becoz we wired from the moment we are fetching data from the API
 
-
-
-
-
+### Fetching Data from Category
+  - use the same concept as above. when we click on any category, it will fetch all posts that belong to that category.
+  - However, we already defined cat in the postsJs Routes file as --> req.query.cat 
 
 
 
