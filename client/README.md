@@ -183,8 +183,13 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
   - In the Singel post we also update the Author and add a Link where it directs us to "/?user=${post.username}".. remember this will direct it to localhost:3000?user=username...as "/" or localhost:3000 === localhost:5000/api/posts?user=post.username becoz we wired from the moment we are fetching data from the API
 
 ### Fetching Data from Category
-  - use the same concept as above. when we click on any category, it will fetch all posts that belong to that category.
+  - use same concept as above. when we click on any category, it will fetch all posts that belong to that category.
   - However, we already defined cat in the postsJs Routes file as --> req.query.cat 
 
 
+### Work on Write page
 
+  - Before we work on Write page we need to make sure user is already logged in if not user has to get registered. 
+  - So, lets work on register page and login page. in the register page we will not use ContextApi. in the log in page we will.
+  - set username, email and password for form and also added an error variable for catching error and then show it on page as well.
+  - once everyting is submitted successfully, then redirect to login page
