@@ -169,3 +169,12 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
   - In the single page the data is fetched as all.
 
 ### Working on Sidebar
+	
+  - Fetch data from the "http://localhost:5000/api/categories" and show all the categories that exists in the sidebar.
+
+
+### Woking on Fetching Data from the Author.
+  
+  - Go to Home and use useLocation again, in the useLocation there is a method "search" whre it gives you the params for query. we used that one for query of user.
+  - Updated the fetchpost with adding + search. and also updated the useEffect with search variable.
+  - Now, whenever we click on Author it will fetch data as "http:localhost:3000?user=post.username"
