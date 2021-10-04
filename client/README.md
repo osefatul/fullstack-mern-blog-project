@@ -195,3 +195,8 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
   - once everyting is submitted successfully, then redirect to login page
  
 ### work on Login page
+  
+  - We use contextAPI, as this seems to be a small application we dont need context management tool.
+  - We use contextAPI because we need same information on every page. so it is better to have it on a separate layer than usin props drilling on every component.
+  - we use login of a user to be there in every page the user goes. that why we need context API
+  - We created a component for context. then Action.js, context.js and Reducer.js
