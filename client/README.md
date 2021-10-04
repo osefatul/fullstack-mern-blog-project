@@ -167,3 +167,5 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
   - In the Post component we fetched all the infos - title, desc, createdAT, etc - we also used Link as well where it direct us to the single page of the post using the post._id 
   - In the single page we fetched data again from the link of "http://localhost:5000/api/posts/id", remember we are using link because proxy doesnt work. if it worked we would only use "/posts/ id", we got id form the useLocation hook.
   - In the single page the data is fetched as all.
+
+### Working on Sidebar
