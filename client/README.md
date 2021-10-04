@@ -178,3 +178,4 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
   - Go to Home and use useLocation again, in the useLocation there is a method "search" whre it gives you the params for query. we used that one for query of user.
   - Updated the fetchpost with adding + search. and also updated the useEffect with search variable.
   - Now, whenever we click on Author it will fetch data as "http:localhost:3000?user=post.username"
+  - In the Singel post we also update the Author and add a Link where it direct us to "/?user=${user.name}"
