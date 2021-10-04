@@ -156,12 +156,14 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
 
 ## Connnecting Rest API and MongoDB (Backend) to React (Frontend)
  
- - To fetch data we used Axios library
- - Go to package.json and at the end add "proxy":"http://localhost:5000/api"
- - Make sure to enable CORS: This post shows how to enable Cross Origin Resource Sharing (CORS) in Node. CORS essentially means cross-domain requests. for example we are using different domains for client (localhost:3000) and API (localhost:5000)https://dzone.com/articles/cors-in-node
- - We added CORS enabling snippet in the index.js in the client side
- - proxy didn't work for me, so i used the domain link rather in the fetchPost in the Home page.
- - Assigned the data from the API to the posts and then assigned it to the posts prop in the Post component. went ahead to the Post components and mapped through the posts props for each post in the posts array we again assign a Post component and the prop.
- - In the Post component we fetched all the infos - title, desc, createdAT, etc - we also used Link as well where it direct us to the single page of the post using the post._id 
+### Fetching Data from API to Components:
 
-
+  - To fetch data we used Axios library
+  - Go to package.json and at the end add "proxy":"http://localhost:5000/api"
+  - Make sure to enable CORS: This post shows how to enable Cross Origin Resource Sharing (CORS) in Node. CORS essentially means cross-domain requests. for example we are using different domains for client (localhost:3000) and API (localhost:5000)https://dzone.com/articles/cors-in-node
+  - We added CORS enabling snippet in the index.js in the client side
+  - proxy didn't work for me, so i used the domain link rather in the fetchPost in the Home page.
+  - Assigned the data from the API to the posts and then assigned it to the posts prop in the Post component. went ahead to the Post component and mapped through the posts props for each post in the posts array we again assign a Post component and the prop.
+  - In the Post component we fetched all the infos - title, desc, createdAT, etc - we also used Link as well where it direct us to the single page of the post using the post._id 
+  - In the single page we fetched data again from the link of "http://localhost:5000/api/posts/id", remember we are using link because proxy doesnt work. if it worked we would only use "/posts/ id", we got id form the useLocation hook.
+  - In the single page the data is fetched as all.
