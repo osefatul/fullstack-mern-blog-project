@@ -12,6 +12,8 @@ export const userSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   //So what are the actions for redux we want to deploy. when we click on the channel we need to enter the room. how we do that? we basically get the channel id and push it to the store.
   reducers: {
+    //This is how we can dispatch loginFailure in the login page: ------>    dispatch(login(data))
+    //then the data is assigned to the "user"
     login: (state, action) => {
       state.user = action.payload;
     },
@@ -22,6 +24,7 @@ export const userSlice = createSlice({
       state.isFetching = true;
     },
     loginFailure: (state, action) => {
+      //This is how we can dispatch loginFailure in the login page: ------>    dispatch(loginFailure())
       state.error = true;
     },
   },
