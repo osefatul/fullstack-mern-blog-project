@@ -13,7 +13,6 @@ function Register() {
     setEmail("");
     setUsername("");
     setPassword("");
-
     setError(false);
 
     try {
@@ -25,6 +24,7 @@ function Register() {
 
       //we can use useHistory as well to go to another link once data is there which means once data is submitted
       res.data && window.location.replace("/login");
+      console.log(res.data);
     } catch (err) {
       setError(true);
       console.log(err);
@@ -58,7 +58,9 @@ function Register() {
           placeholder="Enter your password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="registerButton">Register</button>
+        <button type="submit" className="registerButton">
+          Register
+        </button>
       </form>
       <button className="registerLoginButton">
         <Link className="link" to="/login">
