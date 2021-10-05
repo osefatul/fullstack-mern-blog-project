@@ -3,7 +3,12 @@ import React, { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../Context/Context";
 import { useDispatch } from "react-redux";
-import { login, selectUser } from "../../features/userSlice";
+import {
+  login,
+  loginFailure,
+  selectError,
+  selectUser,
+} from "../../features/userSlice";
 import { useSelector } from "react-redux";
 import "./Login.css";
 
@@ -12,8 +17,9 @@ function Login() {
   const passwordRef = useRef();
   //const { user, dispatch, isFetching } = useContext(Context);
   const user = useSelector(selectUser);
+  const error = useSelector(selectError);
   const dispatch = useDispatch();
-  const [error, setError] = useState(false);
+  //const [error, setError] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -43,7 +49,8 @@ function Login() {
         dispatch(login(res.data));
         res.data && window.location.replace("/");
       } else {
-        setError(true);
+        //we are using an error from the redux. this will turn error variable to true
+        dispatch(loginFailure());
       }
     } catch (err) {
       console.log(err);
@@ -82,7 +89,7 @@ function Login() {
       </button>
       {error && (
         <span style={{ color: "red", marginTop: "10px" }}>
-          Something went wrong
+          Plz enter you login credentials
         </span>
       )}
     </div>
