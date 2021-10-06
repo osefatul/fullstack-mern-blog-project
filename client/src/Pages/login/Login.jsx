@@ -17,12 +17,12 @@ import "./Login.css";
 function Login() {
   const userRef = useRef();
   const passwordRef = useRef();
-  //const { user, dispatch, isFetching } = useContext(Context);
+
   const user = useSelector(selectUser);
   const error = useSelector(selectError);
   const IsFetching = useSelector(selectIsFetching); // this is the state of the variable isfetching.
   const dispatch = useDispatch();
-  //const [error, setError] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -49,7 +49,7 @@ function Login() {
 
         //send data
         dispatch(login(res.data));
-
+        localStorage.setItem("userInfo", JSON.stringify(res.data));
         res.data && window.location.replace("/");
       } else {
         //we are using an error from the redux. this will turn error variable true

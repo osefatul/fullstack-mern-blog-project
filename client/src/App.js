@@ -6,8 +6,13 @@ import Settings from "./Pages/settings/Settings";
 import Single from "./Pages/Single/Single";
 import Write from "./Pages/Write/Write";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { selectUser } from "./features/userSlice";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+
 function App() {
-  const user = false;
+  const user = localStorage.getItem("userInfo");
+
   return (
     <div className="App">
       <Router>

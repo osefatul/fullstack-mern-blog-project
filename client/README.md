@@ -209,3 +209,8 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
 		4- loginError: this will turn error on.
  
   - In the Login page we fetched the above reducers and selectors from userSlice.
+  - if isFetching is true, the login button will be disabled... check out the codes for further understanding.
+
+
+### App Page
+  - import user into this page from the redux using useSelector, this will make sure, if the user is already there then consistent the page even the page is refreshed
