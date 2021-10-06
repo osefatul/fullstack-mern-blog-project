@@ -23,9 +23,6 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // //dispatch start only will get the username and password
-    // dispatch({ type: "LOGIN_START" });
-
     try {
       const config = {
         header: {
@@ -45,7 +42,6 @@ function Login() {
         );
 
         //send data
-        //dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
         dispatch(login(res.data));
         res.data && window.location.replace("/");
       } else {
@@ -56,7 +52,8 @@ function Login() {
       console.log(err);
     }
   };
-  console.log(user);
+
+  //console.log(user);
 
   return (
     <div className="login">

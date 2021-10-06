@@ -196,7 +196,9 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
  
 ### work on Login page
   
-  - We use contextAPI, as this seems to be a small application we dont need context management tool.
-  - We use contextAPI because we need same information on every page. so it is better to have it on a separate layer than usin props drilling on every component.
-  - we use login of a user to be there in every page the user goes. that why we need context API
-  - We created a component for context. then Action.js, context.js and Reducer.js
+  - We used Redux for authentication management tools such as registration and login.
+  - It is better to have it on a separate layer than usin props drilling on every component.
+  - we use login of a user to be there in every page the user goes. that why we need Redux.
+  - We created a directories of feature having userSlice.js and app having store.js
+  - we Introduced three initials for reducers - error, users and isFetching.
+  - In the Login page we fetched login, error reducers from userSlice.
