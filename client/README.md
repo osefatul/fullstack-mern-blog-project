@@ -200,5 +200,12 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
   - It is better to have it on a separate layer than usin props drilling on every component.
   - we use login of a user to be there in every page the user goes. that why we need Redux.
   - We created a directories of feature having userSlice.js and app having store.js
-  - we Introduced three initials for reducers - error, users and isFetching.
-  - In the Login page we fetched login, error reducers from userSlice.
+  - we Introduced three initials for reducers - error:false, users:null and isFetching:false - with the given values
+  - We then have four reducers to dispatch actions.
+		
+		1- login: this reducer will dispatch an action where the user value will be loaded on.
+		2- logout: this reducer will dispatch an action where the user will have the null value.
+		3- credentialsFetched: this will turn isFetching on.
+		4- loginError: this will turn error on.
+ 
+  - In the Login page we fetched the above reducers and selectors from userSlice.

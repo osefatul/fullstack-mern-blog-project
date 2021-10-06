@@ -10,7 +10,7 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
-  //So what are the actions for redux we want to deploy. when we click on the channel we need to enter the room. how we do that? we basically get the channel id and push it to the store.
+  //So what are the actions for redux we want to deploy.
   reducers: {
     //This is how we can dispatch loginFailure in the login page: ------>    dispatch(login(data))
     //then the data is assigned to the "user"
@@ -23,22 +23,19 @@ export const userSlice = createSlice({
     credentialsFetched: (state, action) => {
       state.isFetching = true;
     },
-    loginFailure: (state, action) => {
+    loginError: (state, action) => {
       //This is how we can dispatch loginFailure in the login page: ------>    dispatch(loginFailure())
       state.error = true;
     },
   },
 });
 
-export const { login, logout, credentialsFetched, loginFailure } =
+export const { login, logout, credentialsFetched, loginError } =
   userSlice.actions;
 
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-
+// The function below is called a selector and allows us to select a value from the state. or send export the state value
 export const selectUser = (state) => state.user.user;
 export const selectError = (state) => state.user.error;
-export const selectFetch = (state) => state.user.isFetching;
+export const selectIsFetching = (state) => state.user.isFetching;
 
 export default userSlice.reducer;
