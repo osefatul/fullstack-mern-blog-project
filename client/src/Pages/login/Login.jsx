@@ -50,7 +50,7 @@ function Login() {
         //send data
         dispatch(login(res.data));
 
-        //res.data && window.location.replace("/");
+        res.data && window.location.replace("/");
       } else {
         //we are using an error from the redux. this will turn error variable true
         dispatch(loginError());
@@ -83,7 +83,8 @@ function Login() {
           placeholder="Enter your password"
           ref={passwordRef}
         />
-        <button className="loginButton" type="submit">
+        {/* make the button disabled when data is fetching, or isFetching === true */}
+        <button className="loginButton" type="submit" disabled={IsFetching}>
           Login
         </button>
       </form>
