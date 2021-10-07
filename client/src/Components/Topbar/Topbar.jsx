@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./topbar.css";
 import { selectUser, logout } from "../../features/userSlice";
@@ -10,11 +10,12 @@ function Topbar() {
   const dispatch = useDispatch();
 
   const handleLogout = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     dispatch(logout()); //toggle state.user in the redux to null
     localStorage.removeItem("userInfo"); //remove every data you find in the userInfo
-    window.location.replace("./login"); //redirect user to login page again
+    window.location.replace("/login"); //redirect user to login page again
   };
+
   return (
     <div className="top">
       <div className="topLeft">
