@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 function Topbar() {
-  const user = localStorage.getItem("userInfo");
+  const user = JSON.parse(localStorage.getItem("userInfo"));
   const dispatch = useDispatch();
 
   const handleLogout = (e) => {
@@ -53,11 +53,7 @@ function Topbar() {
       </div>
       <div className="topRight">
         {user ? (
-          <img
-            className="topImage"
-            src="https://www.wagrati.eu/media/images/flagge-afghanistan-1400x933.jpg"
-            alt=""
-          />
+          <img className="topImage" src={user.profilePic} alt="" />
         ) : (
           <ul className="topList">
             <li className="topListItem">
