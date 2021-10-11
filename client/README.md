@@ -242,3 +242,6 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
  #### Editing file
   - In order to updat the post we introduce a state hook for [title, desc  and updateMode].
   - if the updateMode is true then we can update the title, and description.
+  - use those hooks for changing data and then render it.
+  - Two new inputs are introduced just for title and description altering. these input should take their value from the title and desc hook.
+  - Remember all the values in the input should be taken from the hook not the post.[title or desc]

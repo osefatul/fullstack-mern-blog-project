@@ -14,7 +14,7 @@ function SinglePost() {
   const user = useSelector(selectUser);
   const PF = "http://localhost:5000/images/";
   const [title, setTitle = ""] = useState("");
-  const [description, setDescription] = useState("");
+  const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
 
   useEffect(() => {
@@ -22,6 +22,8 @@ function SinglePost() {
       const res = await axios.get("http://localhost:5000/api/posts/" + path);
       //console.log(res.data);
       setPost(res.data);
+      setTitle(res.data.title);
+      setDesc(res.data.desc);
     };
     getPost();
   }, [path]);
@@ -33,7 +35,21 @@ function SinglePost() {
       await axios.delete(`http://localhost:5000/api/posts/${post._id}`, {
         data: { username: user.username },
       });
-      window.location.replace("/"); //check out Post.jsx file for this link
+      //window.location.replace("/"); //check out Post.jsx file for this link
+      setUpdateMode(false);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleUpdate = async () => {
+    try {
+      await axios.put(`http://localhost:5000/api/posts/${post._id}`, {
+        username: user.username,
+        title,
+        desc,
+      });
+      window.location.reload();
     } catch (e) {
       console.log(e);
     }
@@ -49,12 +65,14 @@ function SinglePost() {
         {updateMode ? (
           <input
             type="text"
-            value={post.title}
+            value={title}
             className="singlePostTitleInput"
+            autoFocus
+            onChange={(e) => setTitle(e.target.value)}
           />
         ) : (
           <h1 className="singlePostTitle">
-            {post.title}
+            {title}
             {/* Edit and Delete button */}
             {post.username === user?.username && (
               <div className="singlePostEdit">
@@ -84,9 +102,18 @@ function SinglePost() {
         </div>
 
         {updateMode ? (
-          <textarea className="singePostDescInput" />
+          <textarea
+            className="singePostDescInput"
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+          />
         ) : (
-          <p className="singePostDesc">{post.desc}</p>
+          <p className="singePostDesc">{desc}</p>
+        )}
+        {updateMode && (
+          <button className="singlePostButton" onClick={handleUpdate}>
+            Update
+          </button>
         )}
       </div>
     </div>

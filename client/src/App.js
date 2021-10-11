@@ -11,8 +11,12 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 function App() {
-  const user = localStorage.getItem("userInfo");
+  const user = useSelector(selectUser);
+  //const user = localStorage.getItem("userInfo");
 
+  useEffect(() => {
+    localStorage.getItem("userInfo");
+  }, [user]);
   return (
     <div className="App">
       <Router>

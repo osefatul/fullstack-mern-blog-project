@@ -5,6 +5,8 @@
 .singlePostWrapper{
   padding: 20px;
   padding-right: 0;
+  display: flex;
+  flex-direction: column;
 }
 .singlePostImg{
   width: 100%;
@@ -21,16 +23,19 @@
 }
 
 .singlePostTitleInput{
+  text-align: center;
   margin: 10px;
   font-family: "Lora" serif ;
   font-size: 28px;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  color: grey;
 }
 
-
-
-.singePostDescInput{
-
+.singlePostTitleInput:focus{
+  outline: none
 }
+
 
 .singlePostEdit{
   /* Move Button to the right */
@@ -72,4 +77,30 @@
   margin-left: 20px;
   font-size:30px;
   font-weight:600
+}
+
+
+.singePostDescInput{
+  color: #666;
+  font-size: 18px;
+  line-height: 25px;
+  border:none
+}
+
+.singePostDescInput:focus{
+  outline: none;
+}
+
+
+.singlePostButton{
+  width:100px;
+  border: none;
+  background-color:teal;
+  padding: 5px;
+  color: white;
+  border-radius:5px;
+  cursor: pointer;
+  /* we dont use align-items because there is not items inside of it. we use align-self. */
+  align-self: center; 
+  margin-top:20px;
 }

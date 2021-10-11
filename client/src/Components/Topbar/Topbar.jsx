@@ -56,6 +56,7 @@ function Topbar() {
         </ul>
       </div>
       <div className="topRight">
+        /
         {user ? (
           <img className="topImage" src={user.profilePic} alt="" />
         ) : (
@@ -73,7 +74,6 @@ function Topbar() {
             </li>
           </ul>
         )}
-
         <i className="topSearchIcon fas fa-search"></i>
       </div>
     </div>
