@@ -227,6 +227,11 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
 
 		-  app.use("/images", express.static(path.join(__dirname, "/images")));
 
- - This means use this /images link as static connected to the images directory in the api folder. thats where all the uploaded file will be stored.
- - Go to the Post.jsx and add a Public filename as "PF" and appended to the source of image there. the PF link is actually identified in the index.js as static path.
- - Also add the PF to the singlePost.jsx as well.
+  - This means use this /images link as static connected to the images directory in the api folder. thats where all the uploaded file will be stored.
+  - Go to the Post.jsx and add a Public filename as "PF" and appended to the source of image there. the PF link is actually identified in the index.js as static path.
+  - Also add the PF to the singlePost.jsx as well.
+
+
+ #### Deleting and Editing file
+  - First if the post doesn't belong to the user it should not show them the edit and delete buttons
+  - Go to SinglePost.jsx thats where the post buttons show. and add logic if the post user is same as the user logged in. then show otherwise dont
