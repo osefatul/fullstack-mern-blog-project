@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 function Topbar() {
-  const user = JSON.parse(localStorage.getItem("userInfo"));
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const handleLogout = (e) => {
@@ -15,6 +15,10 @@ function Topbar() {
     localStorage.removeItem("userInfo"); //remove every data you find in the userInfo
     window.location.replace("/login"); //redirect user to login page again
   };
+
+  useEffect(() => {
+    localStorage.getItem("userInfo");
+  }, [user]);
 
   return (
     <div className="top">
