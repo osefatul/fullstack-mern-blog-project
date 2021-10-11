@@ -34,9 +34,7 @@ function Write() {
     try {
       //after uploading the newpost to the posts we then should be directed to single post
       const res = await axios.post("http://localhost:5000/api/posts", newPost);
-      window.location.replace(
-        "http://localhost:3000/api/posts/" + res.data._id
-      );
+      window.location.replace("http://localhost:3000/post/" + res.data._id);
     } catch (err) {}
   };
 
@@ -63,6 +61,7 @@ function Write() {
             placeholder="Title"
             class="writeInput"
             autoFocus={true}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
 
@@ -71,6 +70,7 @@ function Write() {
             placeholder="Tell your story"
             type="text"
             className="writeInput writeText"
+            onChange={(e) => setDesc(e.target.value)}
           ></textarea>
         </div>
         <button className="writeSubmit" type="submit">
