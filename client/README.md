@@ -217,6 +217,8 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
 
 
 ### Write page
+
+ #### Uploading File
   - We will define three state hooks: title, description and file for photo.
   - We can upload this photo picture to somewhere in database through formData() , where in our case it is in the images direcory located in the api direcotry.
   - Add filename, file itself to the form and upload it using axios.post("http://localhost:5000/api/upload", data);
