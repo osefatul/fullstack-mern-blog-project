@@ -218,4 +218,12 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
 
 ### Write page
   - We will define three state hooks: title, description and file for photo.
-  - As we have form in the write page for photo, title and description. then we can send this formData to post somwhere in the database by formData() object
+  - We can upload this photo picture to somewhere in database through formData() , where in our case it is in the images direcory located in the api direcotry.
+  - Add filename, file itself to the form and upload it using axios.post("http://localhost:5000/api/upload", data);
+  - Add the filename of the uploaded file to the object consists of {username, title, desc} and then pass this object to be posted through axios.post("http://localhost:5000/api/posts", newPost)
+  - Go to index.js and use a static path for the directory where the uploaded file will be stored:
+
+		-  app.use("/images", express.static(path.join(__dirname, "/images")));
+
+ - This means use this /images link as static connected to the images directory in the api folder. thats where all the uploaded file will be stored.
+ - Go to the Post.jsx and add a Public filename as "PF" and appended to the source of image there. the PF link is actually identified in the index.js as static path.

@@ -12,7 +12,6 @@ function Write() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     //create a new post
     const newPost = {
       username: user.username,
