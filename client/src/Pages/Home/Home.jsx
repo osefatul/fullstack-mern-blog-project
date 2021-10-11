@@ -10,7 +10,7 @@ function Home() {
   const location = useLocation();
   //console.log(location);
   const search = location.search; // const {search} = useLocation();
-  console.log(search);
+  //console.log(search);
 
   const fetchPost = async () => {
     //make sure you added proxy in the package.json

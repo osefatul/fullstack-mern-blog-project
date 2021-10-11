@@ -23,19 +23,23 @@ function Write() {
     if (file) {
       const data = new FormData();
       const filename = Date.now() + file.name; // this is good for an id of a file
-      data.append("filename", filename);
+      data.append("name", filename);
       data.append("file", file);
       newPost.photo = filename;
 
       try {
         await axios.post("http://localhost:5000/api/upload", data); //thats where we upload our new post
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
     }
     try {
       //after uploading the newpost to the posts we then should be directed to single post
       const res = await axios.post("http://localhost:5000/api/posts", newPost);
-      window.location.replace("http://localhost:3000/post/" + res.data._id);
-    } catch (err) {}
+      window.location.replace("/post/" + res.data._id); //check out Post.jsx file for this link
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

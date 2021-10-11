@@ -9,6 +9,7 @@ function SinglePost() {
   //console.log(location.pathname.split("/")[2]); //get the id from the link
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
+  const PF = "http://localhost:5000/images/";
 
   useEffect(() => {
     const getPost = async () => {
@@ -23,11 +24,12 @@ function SinglePost() {
     <div className="singlePost">
       <div className="singlePostWrapper">
         {post.photo && (
-          <img className="singlePostImg" src={post.photo} alt="" />
+          <img className="singlePostImg" src={PF + post.photo} alt="" />
         )}
 
         <h1 className="singlePostTitle">
           {post.title}
+          {/* Edit and Delete button */}
           <div className="singlePostEdit">
             <i class="singlePostIcon far fa-edit"></i>
             <i class="singlePostIcon far fa-trash-alt"></i>

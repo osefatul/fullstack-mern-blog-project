@@ -3,7 +3,7 @@ const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const multer = require("multer");
-
+const path = require("path");
 //Routes
 const authRoute = require("./routes/auths");
 const userRoute = require("./routes/users");
@@ -24,6 +24,9 @@ app.use(function (req, res, next) {
 
 //express. json() is a method inbuilt in express to recognize the incoming Request Object as a JSON Object.
 app.use(express.json());
+
+app.use("/images", express.static(path.join(__dirname, "/images")));
+
 app.use("/api/auths", authRoute);
 app.use("/api/users/", userRoute);
 app.use("/api/posts", postRoute);
@@ -41,9 +44,9 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, callback) => {
     //filename will be sent to react application so it will be taken from a user written in the body. basically we can't use body here for now
-    //callbacks(null, req.body.name);
+    callback(null, req.body.name);
 
-    callback(null, "hello.jpg");
+    //callback(null, "hello.jpg");
   },
 });
 
