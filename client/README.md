@@ -232,6 +232,12 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
   - Also add the PF to the singlePost.jsx as well.
 
 
- #### Deleting and Editing file
+ #### Deleting file
   - First if the post doesn't belong to the user it should not show them the edit and delete buttons
-  - Go to SinglePost.jsx thats where the post buttons show. and add logic if the post user is same as the user logged in. then show otherwise dont
+  - Go to SinglePost.jsx thats where the post buttons show. and add logic if the post user is same as the user logged in. then show otherwise dont.
+  - in the Delete method, I was faced a problem whenever I would delete a post it couldn't be deleted because CORS wouldn't allow me, for that I added the below code:
+
+  		- res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+
+ #### Editing file
+  - In order to update title and desc we introduce a state hook for title and description.

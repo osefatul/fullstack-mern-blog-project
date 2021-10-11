@@ -20,6 +20,18 @@
   font-size: 28px;
 }
 
+.singlePostTitleInput{
+  margin: 10px;
+  font-family: "Lora" serif ;
+  font-size: 28px;
+}
+
+
+
+.singePostDescInput{
+
+}
+
 .singlePostEdit{
   /* Move Button to the right */
   float: right;

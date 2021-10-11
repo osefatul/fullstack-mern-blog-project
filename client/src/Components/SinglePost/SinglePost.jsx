@@ -13,8 +13,9 @@ function SinglePost() {
   const [post, setPost] = useState({});
   const user = useSelector(selectUser);
   const PF = "http://localhost:5000/images/";
-  console.log(post.username === user?.username);
-  console.log(post._id);
+  const [title, setTitle = ""] = useState("");
+  const [description, setDescription] = useState("");
+  const [updateMode, setUpdateMode] = useState(false);
 
   useEffect(() => {
     const getPost = async () => {
@@ -45,19 +46,30 @@ function SinglePost() {
           <img className="singlePostImg" src={PF + post.photo} alt="" />
         )}
 
-        <h1 className="singlePostTitle">
-          {post.title}
-          {/* Edit and Delete button */}
-          {post.username === user?.username && (
-            <div className="singlePostEdit">
-              <i className="singlePostIcon far fa-edit"></i>
-              <i
-                className="singlePostIcon far fa-trash-alt"
-                onClick={handleDelete}
-              ></i>
-            </div>
-          )}
-        </h1>
+        {updateMode ? (
+          <input
+            type="text"
+            value={post.title}
+            className="singlePostTitleInput"
+          />
+        ) : (
+          <h1 className="singlePostTitle">
+            {post.title}
+            {/* Edit and Delete button */}
+            {post.username === user?.username && (
+              <div className="singlePostEdit">
+                <i
+                  className="singlePostIcon far fa-edit"
+                  onClick={() => setUpdateMode(true)}
+                ></i>
+                <i
+                  className="singlePostIcon far fa-trash-alt"
+                  onClick={handleDelete}
+                ></i>
+              </div>
+            )}
+          </h1>
+        )}
 
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
@@ -70,7 +82,12 @@ function SinglePost() {
             {new Date(post.createdAt).toDateString()}
           </span>
         </div>
-        <p className="singePostDesc">{post.desc}</p>
+
+        {updateMode ? (
+          <textarea className="singePostDescInput" />
+        ) : (
+          <p className="singePostDesc">{post.desc}</p>
+        )}
       </div>
     </div>
   );
