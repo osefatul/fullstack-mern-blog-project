@@ -213,4 +213,9 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
 
 
 ### App Page
-  - import user into this page from the redux using useSelector, this will make sure, if the user is already there then consistent the page even the page is refreshed
+  - import user into this page from the redux using useSelector, this will make sure, if the user is already there then consistent the page even the page is refreshed.
+
+
+### Write page
+  - We will define three state hooks: title, description and file for photo.
+  - As we have form in the write page for photo, title and description. then we can send this formData to post somwhere in the database by formData() object
