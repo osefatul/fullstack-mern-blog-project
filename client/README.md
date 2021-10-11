@@ -227,3 +227,4 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
 
  - This means use this /images link as static connected to the images directory in the api folder. thats where all the uploaded file will be stored.
  - Go to the Post.jsx and add a Public filename as "PF" and appended to the source of image there. the PF link is actually identified in the index.js as static path.
+ - Also add the PF to the singlePost.jsx as well.
