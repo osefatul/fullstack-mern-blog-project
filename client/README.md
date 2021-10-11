@@ -240,4 +240,5 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
   		- res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
 
  #### Editing file
-  - In order to update title and desc we introduce a state hook for title and description.
+  - In order to updat the post we introduce a state hook for [title, desc  and updateMode].
+  - if the updateMode is true then we can update the title, and description.
