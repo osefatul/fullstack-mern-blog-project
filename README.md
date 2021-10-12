@@ -154,14 +154,110 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
 
 
 
-
-
-
 ## Connnecting Rest API and MongoDB (Backend) to React (Frontend)
  
- - To fetch data we used Axios library
- - Go to package.json and at the end add "proxy":"http://localhost:5000/api"
- - Make sure to enable CORS: This post shows how to enable Cross Origin Resource Sharing (CORS) in Node. CORS essentially means cross-domain requests. https://dzone.com/articles/cors-in-node
- - We added CORS enabling snippet in the index.js in the client side
+### Fetching Data from API to Components:
 
+  - To fetch data we used Axios library
+  - Go to package.json and at the end add "proxy":"http://localhost:5000/api"
+  - Make sure to enable CORS: This post shows how to enable Cross Origin Resource Sharing (CORS) in Node. CORS essentially means cross-domain requests. for example we are using different domains for client (localhost:3000) and API (localhost:5000)https://dzone.com/articles/cors-in-node
+  - We added CORS enabling snippet in the index.js in the client side
+  - proxy didn't work for me, so i used the domain link rather in the fetchPost in the Home page.
+  - Assigned the data from the API to the posts and then assigned it to the posts prop in the Post component. went ahead to the Post component and mapped through the posts props for each post in the posts array we again assign a Post component and the prop.
+  - In the Post component we fetched all the infos - title, desc, createdAT, etc - we also used Link as well where it direct us to the single page of the post using the post._id 
+  - In the single page we fetched data again from the link of "http://localhost:5000/api/posts/id", remember we are using link because proxy doesnt work. if it worked we would only use "/posts/ id", we got id form the useLocation hook.
+  - In the single page the data is fetched as all.
+
+### Working on Sidebar
+	
+  - Fetch data from the "http://localhost:5000/api/categories" and show all the categories that exists in the sidebar.
+
+
+### Woking on Fetching Data from the Author
+  
+  - Go to Home and use useLocation again, in the useLocation there is a method "search" where it gives you the params for query. we used that one for query of user.
+  - Updated the fetchpost with adding + search. and also updated the useEffect with search variable. if we dont use "search", the link not gonna let us search the parameter we want which for example user=username. we add "search" because it will fecth whatever we query from API. it is mandatory.
+  - Remember we already defined "user" for query in the postsJs routes --> req.query.user 
+  - Now, whenever we click on Author it will fetch data as "http:localhost:3000?user=post.username".. where localhost:3000 is linked with localhost:5000/api/posts domain for the API feching.
+  - So, so localhost:3000?user=username is equal to localhost:5000/api/posts?user=username
+  - In the Singel post we also update the Author and add a Link where it directs us to "/?user=${post.username}".. remember this will direct it to localhost:3000?user=username...as "/" or localhost:3000 === localhost:5000/api/posts?user=post.username becoz we wired from the moment we are fetching data from the API
+
+### Fetching Data from Category
+  - use same concept as above. when we click on any category, it will fetch all posts that belong to that category.
+  - However, we already defined cat in the postsJs Routes file as --> req.query.cat 
+
+
+### Work on Write page: Register
+
+  - Before we work on Write page we need to make sure user is already logged in if not user has to get registered. 
+  - So, lets work on register page and login page. in the register page we will not use ContextApi. in the log in page we will.
+  - set username, email and password for form and also added an error variable for catching error and then show it on page as well.
+  - once everyting is submitted successfully, then redirect to login page
+ 
+### work on Login page
+  
+  - We used Redux for authentication management tools such as registration and login.
+  - It is better to have it on a separate layer than usin props drilling on every component.
+  - we use login of a user to be there in every page the user goes. that why we need Redux.
+  - We created a directories of feature having userSlice.js and app having store.js
+  - we Introduced three initials for reducers - error:false, users:null and isFetching:false - with the given values
+  - We then have four reducers to dispatch actions.
+		
+		1- login: this reducer will dispatch an action where the user value will be loaded on.
+		2- logout: this reducer will dispatch an action where the user will have the null value.
+		3- credentialsFetched: this will turn isFetching on.
+		4- loginError: this will turn error on.
+ 
+  - In the Login page we fetched the above reducers and selectors from userSlice.
+  - if isFetching is true, the login button will be disabled... check out the codes for further understanding.
+
+
+### App Page
+  - import user into this page from the redux using useSelector, this will make sure, if the user is already there then consistent the page even the page is refreshed.
+
+
+### Write page
+
+ #### Uploading File
+  - We will define three state hooks: title, description and file for photo.
+  - We can upload this photo picture to somewhere in database through formData() , where in our case it is in the images direcory located in the api direcotry.
+  - Add filename, file itself to the form and upload it using axios.post("http://localhost:5000/api/upload", data);
+  - Add the filename of the uploaded file to the object consists of {username, title, desc} and then pass this object to be posted through axios.post("http://localhost:5000/api/posts", newPost)
+  - Go to index.js and use a static path for the directory where the uploaded file will be stored:
+
+		-  app.use("/images", express.static(path.join(__dirname, "/images")));
+
+  - This means use this /images link as static connected to the images directory in the api folder. thats where all the uploaded file will be stored.
+  - Go to the Post.jsx and add a Public filename as "PF" and appended to the source of image there. the PF link is actually identified in the index.js as static path.
+  - Also add the PF to the singlePost.jsx as well.
+
+
+ #### Deleting file
+  - First if the post doesn't belong to the user it should not show them the edit and delete buttons
+  - Go to SinglePost.jsx thats where the post buttons show. and add logic if the post user is same as the user logged in. then show otherwise dont.
+  - in the Delete method, I was faced a problem whenever I would delete a post it couldn't be deleted because CORS wouldn't allow me, for that I added the below code:
+
+  		- res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+
+ #### Editing file
+  - In order to updat the post we introduce a state hook for [title, desc  and updateMode].
+  - if the updateMode is true then we can update the title, and description.
+  - use those hooks for changing data and then render it.
+  - Two new inputs are introduced just for title and description altering. these input should take their value from the title and desc hook.
+  - Remember all the values in the input should be taken from the hook not the post.[title or desc]
+
+
+### Setting page
+  - The usage setting page is to modify the user credentials. So, the idea of setting page with the write page is same, both are modifying something, one a post another a user's credentials.
+  - Defined file as the file will act for the profile picture. as in the write page it was the post itself.
+  - Defined three hooks = [username, email, password], each will be setting a their correspondent values.
+  - Defined the static path for those uploaded-pictures storage that we initiated in the api/index.js....   app.use("/images", express.static(path.join(__dirname, "/images")));
+  - Add filename, file itself which is the profilePic to the form and upload it using axios.post("http://localhost:5000/api/upload", data);
+  - Add the filename of the uploaded file's name to the object consists of {username, email, password} and then pass this object to be updated through PUT method using --> axios.put("http://localhost:5000/api/users/" + user._id, updatedUser).
+  - Once they are updated, now it is a time to fetche the data again. we dont fetch the data, we are dispatchinG login credentials, just change the user credential who is logged in. 
+  - As we dispatch the login we at the same time set the localStorage.setItem with the new data. so the user will get changed.
+  - If we dont dispatch login we cannot set/update user credentials. We have to first set/update and then replace those updated credentials with the old ones in the localStorage.
+  - For the profile picture update. If user selected a picture then show the selected picture otherwise show the old ones. For the new one the source should be an object where it creates a URL for the selected file(picture).
+  - However if the file is not selected which means we dont wanna change it then the source of that image will be uploaded picture directory + the picture id which is stored in the user credentials.
+  
 
