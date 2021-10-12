@@ -1,8 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./Settings.css";
 import afg from "../../afg.jpg";
+import { selectUser } from "../../features/userSlice";
+import { useSelector } from "react-redux";
+import axios from "axios";
 function Settings() {
+  const [file, setFile] = useState(null);
+  const user = useSelector(selectUser);
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    //create a new post
+    const updatedUser = {
+      userId: user._id,
+      username,
+      email,
+      password,
+    };
+
+    if (file) {
+      const data = new FormData();
+      const filename = Date.now() + file.name; // this is good for an id of a file
+      data.append("name", filename);
+      data.append("file", file);
+      updatedUser.profilePic = filename;
+
+      try {
+        await axios.post("http://localhost:5000/api/upload", data); //thats where we upload our new post
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    try {
+      //after uploading the newpost to the posts we then should be directed to single post
+      const res = await axios.put("http://localhost:5000/api/posts", newPost);
+      window.location.replace("/post/" + res.data._id); //check out Post.jsx file for this link
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="settings">
       <div className="settingsWrapper">
@@ -14,11 +55,7 @@ function Settings() {
         <form action="" className="settingsForm">
           <label htmlFor="">Profile Picture</label>
           <div className="settingsPP">
-            <img
-              className=""
-              src="https://www.wagrati.eu/media/images/flagge-afghanistan-1400x933.jpg"
-              alt=""
-            />
+            <img className="" src={user.profilePic} alt="" />
             <label htmlFor="fileInput">
               <i class="settingsPPIcon far fa-user-circle"></i>
             </label>

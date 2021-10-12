@@ -3,6 +3,7 @@
 }
 .settingsWrapper{
   flex: 9;
+  margin-left: 30px ;
 }
 
 .settingsTitle{

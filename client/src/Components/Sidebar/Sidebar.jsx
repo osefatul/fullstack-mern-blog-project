@@ -12,7 +12,7 @@ function Sidebar() {
   };
   useEffect(() => {
     getCats();
-  }, [cats]);
+  }, []);
   return (
     <div className="sidebar">
       <div className="sidebarItem">
