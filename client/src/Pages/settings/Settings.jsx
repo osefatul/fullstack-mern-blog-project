@@ -34,7 +34,8 @@ function Settings() {
       updatedUser.profilePic = filename;
 
       try {
-        await axios.post("http://localhost:5000/api/upload", data); //thats where we upload our new post
+        //thats how we upload our new profile picture in the storage that is defined in the api/index.js. a public static path for a directory named "images"
+        await axios.post("http://localhost:5000/api/upload", data);
       } catch (err) {
         console.log(err);
       }
@@ -58,9 +59,9 @@ function Settings() {
     }
   };
 
-  useEffect(() => {
-    localStorage.getItem("userInfo");
-  }, [user]);
+  // useEffect(() => {
+  //   localStorage.getItem("userInfo");
+  // }, [user]);
 
   return (
     <div className="settings">

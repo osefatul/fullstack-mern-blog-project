@@ -28,8 +28,6 @@ function SinglePost() {
     getPost();
   }, [path]);
 
-  // const handleEdit = async () => {};
-
   const handleDelete = async () => {
     try {
       await axios.delete(`http://localhost:5000/api/posts/${post._id}`, {

@@ -245,3 +245,12 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
   - use those hooks for changing data and then render it.
   - Two new inputs are introduced just for title and description altering. these input should take their value from the title and desc hook.
   - Remember all the values in the input should be taken from the hook not the post.[title or desc]
+
+
+### Setting page
+  - The usage setting page is to modify the user credentials. So, the idea of setting page with the write page is same, both are modifying something, one a post another a user's credentials.
+  - Defined file as the file will act for the profile picture. as in the write page it was the post itself.
+  - Defined three hooks = [username, email, password], each will be setting a their correspondent values.
+  - Defined the static path for those uploaded-pictures storage that we initiated in the api/index.js....   app.use("/images", express.static(path.join(__dirname, "/images")));
+  - Add filename, file itself which is the profilePic to the form and upload it using axios.post("http://localhost:5000/api/upload", data);
+  - Add the filename of the uploaded file's name to the object consists of {username, email, password} and then pass this object to be updated through PUT method using --> axios.put("http://localhost:5000/api/users/" + user._id, updatedUser)
