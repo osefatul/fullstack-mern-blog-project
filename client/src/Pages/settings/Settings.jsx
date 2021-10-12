@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./Settings.css";
-import afg from "../../afg.jpg";
-import { selectUser } from "../../features/userSlice";
+import { useDispatch } from "react-redux";
+
+import { selectUser, login } from "../../features/userSlice";
 import { useSelector } from "react-redux";
 import axios from "axios";
 function Settings() {
@@ -11,8 +12,10 @@ function Settings() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
+    console.log(user.username);
     e.preventDefault();
     //create a new post
     const updatedUser = {
@@ -35,14 +38,28 @@ function Settings() {
         console.log(err);
       }
     }
+
+    /*#########################################################################################
+    THE MOST IMPORTANT PART OF THIS PAGE IS HOW TO UPDATE A LOGIN USER USING REDUX
+    ########################################################################################
+    */
+
     try {
-      //after uploading the newpost to the posts we then should be directed to single post
-      const res = await axios.put("http://localhost:5000/api/posts", newPost);
-      window.location.replace("/post/" + res.data._id); //check out Post.jsx file for this link
+      const res = await axios.put(
+        "http://localhost:5000/api/users/" + user._id,
+        updatedUser
+      );
+
+      dispatch(login(res.data));
+      localStorage.setItem("userInfo", JSON.stringify(res.data));
     } catch (err) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    localStorage.getItem("userInfo");
+  }, [user]);
 
   return (
     <div className="settings">
@@ -52,21 +69,38 @@ function Settings() {
           <span className="settingsDeleteTitle">Delete Account</span>
         </div>
 
-        <form action="" className="settingsForm">
+        <form action="" className="settingsForm" onSubmit={handleSubmit}>
           <label htmlFor="">Profile Picture</label>
           <div className="settingsPP">
             <img className="" src={user.profilePic} alt="" />
             <label htmlFor="fileInput">
               <i class="settingsPPIcon far fa-user-circle"></i>
             </label>
-            <input type="file" id="fileInput" style={{ display: "none" }} />
+            <input
+              type="file"
+              id="fileInput"
+              style={{ display: "none" }}
+              onChange={(e) => setFile(e.target.files[0])}
+            />
           </div>
           <label htmlFor="">Username</label>
-          <input type="text" placeholder="Sefat" />
+          <input
+            type="text"
+            placeholder={user.username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
           <label htmlFor="">Email</label>
-          <input type="text" placeholder="sefat@gmai.com" />
+          <input
+            type="text"
+            placeholder={user.email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <label htmlFor="">Password</label>
-          <input type="password" placeholder="" />
+          <input
+            type="password"
+            placeholder=""
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <button className="settingsSubmit" type="submit">
             Update
           </button>
