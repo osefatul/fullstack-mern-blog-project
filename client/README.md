@@ -259,5 +259,5 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
   - If we dont dispatch login we cannot set/update user credentials. We have to first set/update and then replace those updated credentials with the old ones in the localStorage.
   - For the profile picture update. If user selected a picture then show the selected picture otherwise show the old ones. For the new one the source should be an object where it creates a URL for the selected file(picture).
   - However if the file is not selected which means we dont wanna change it then the source of that image will be uploaded picture directory + the picture id which is stored in the user credentials.
-  - 
+  
 

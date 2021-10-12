@@ -19,7 +19,7 @@ function Sidebar() {
         <span className="sidebarTitle">ABOUT ME</span>
         <img
           className="sidebarImg"
-          src="https://i.pinimg.com/originals/82/8e/09/828e09c5a638731106c83a6f71d9fd0c.jpg"
+          src="http://farmgirlmarketingsolutions.com/wp-content/uploads/2015/12/blog-pic-b2c.jpg"
           alt=""
         />
         <p>

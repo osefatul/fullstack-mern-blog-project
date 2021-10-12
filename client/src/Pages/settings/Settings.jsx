@@ -12,6 +12,8 @@ function Settings() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState(false);
+
   const dispatch = useDispatch();
   const PF = "http://localhost:5000/images/";
 
@@ -36,6 +38,7 @@ function Settings() {
       try {
         //thats how we upload our new profile picture in the storage that is defined in the api/index.js. a public static path for a directory named "images"
         await axios.post("http://localhost:5000/api/upload", data);
+        setSuccess(true);
       } catch (err) {
         console.log(err);
       }
@@ -111,6 +114,13 @@ function Settings() {
           <button className="settingsSubmit" type="submit">
             Update
           </button>
+          {success && (
+            <span
+              style={{ color: "green", alignSelf: "center", marginTop: "10px" }}
+            >
+              Profile has been updated
+            </span>
+          )}
         </form>
       </div>
       <Sidebar />

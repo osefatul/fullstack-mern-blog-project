@@ -27,7 +27,8 @@ function Write() {
       newPost.photo = filename;
 
       try {
-        await axios.post("http://localhost:5000/api/upload", data); //thats where we upload our new post
+        //thats where we upload our data
+        await axios.post("http://localhost:5000/api/upload", data);
       } catch (err) {
         console.log(err);
       }
@@ -70,7 +71,7 @@ function Write() {
 
         <div className="writeFormGroup">
           <textarea
-            placeholder="Tell your story"
+            placeholder="Story line"
             type="text"
             className="writeInput writeText"
             onChange={(e) => setDesc(e.target.value)}

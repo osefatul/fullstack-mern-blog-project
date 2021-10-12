@@ -33,7 +33,7 @@ function SinglePost() {
       await axios.delete(`http://localhost:5000/api/posts/${post._id}`, {
         data: { username: user.username },
       });
-      //window.location.replace("/"); //check out Post.jsx file for this link
+      window.location.replace("/"); //check out Post.jsx file for this link
       setUpdateMode(false);
     } catch (e) {
       console.log(e);
