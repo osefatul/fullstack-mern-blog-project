@@ -4,6 +4,7 @@ import "./topbar.css";
 import { selectUser, logout } from "../../features/userSlice";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+const PF = "http://localhost:5000/images/";
 
 function Topbar() {
   const user = useSelector(selectUser);
@@ -58,7 +59,7 @@ function Topbar() {
       <div className="topRight">
         {user ? (
           <Link to="/settings">
-            <img className="topImage" src={user.profilePic} alt="" />
+            <img className="topImage" src={PF + user.profilePic} alt="" />
           </Link>
         ) : (
           <ul className="topList">

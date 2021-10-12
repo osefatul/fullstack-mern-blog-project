@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./Settings.css";
 import { useDispatch } from "react-redux";
-
 import { selectUser, login } from "../../features/userSlice";
 import { useSelector } from "react-redux";
 import axios from "axios";
+
 function Settings() {
   const [file, setFile] = useState(null);
   const user = useSelector(selectUser);
@@ -13,6 +13,7 @@ function Settings() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const PF = "http://localhost:5000/images/";
 
   const handleSubmit = async (e) => {
     console.log(user.username);
@@ -72,7 +73,7 @@ function Settings() {
         <form action="" className="settingsForm" onSubmit={handleSubmit}>
           <label htmlFor="">Profile Picture</label>
           <div className="settingsPP">
-            <img className="" src={user.profilePic} alt="" />
+            <img className="" src={PF + user.profilePic} alt="" />
             <label htmlFor="fileInput">
               <i class="settingsPPIcon far fa-user-circle"></i>
             </label>
