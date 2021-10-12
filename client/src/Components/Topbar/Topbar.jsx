@@ -17,10 +17,10 @@ function Topbar() {
     window.location.replace("/login"); //redirect user to login page again
   };
 
-  //THIS IS EXTREMELY IMPORTANT FOR USER LOGIN PERSISTATION
-  useEffect(() => {
-    localStorage.getItem("userInfo");
-  }, [user]);
+  // 2/2THIS IS EXTREMELY IMPORTANT FOR USER LOGIN PERSISTATION
+  // useEffect(() => {
+  //   localStorage.getItem("userInfo");
+  // }, [user]);
 
   return (
     <div className="top">

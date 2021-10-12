@@ -23,7 +23,7 @@ function App() {
         <Topbar />
         <Switch>
           <Route exact path="/">
-            <Home />
+            {user ? <Home /> : <Register />}
           </Route>
           <Route path="/register">{user ? <Home /> : <Register />}</Route>
           <Route path="/login">{user ? <Home /> : <Login />}</Route>

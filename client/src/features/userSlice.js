@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  // 1/2 EXTREMELLY IMPORTANT FOR LOGIN PERSISTATION
   user: JSON.parse(localStorage.getItem("userInfo")) || null,
   isFetching: false,
   error: false,
