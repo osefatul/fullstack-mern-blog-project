@@ -17,7 +17,7 @@ function Topbar() {
     window.location.replace("/login"); //redirect user to login page again
   };
 
-  // 2/2THIS IS EXTREMELY IMPORTANT FOR USER LOGIN PERSISTATION
+  // THIS IS EXTREMELY IMPORTANT FOR USER LOGIN PERSISTATION
   // useEffect(() => {
   //   localStorage.getItem("userInfo");
   // }, [user]);

@@ -43,7 +43,7 @@ function Settings() {
 
     /*#########################################################################################
     THE MOST IMPORTANT PART OF THIS PAGE IS HOW TO UPDATE A LOGIN USER USING REDUX
-    ########################################################################################
+    ###########################################################################################
     */
 
     try {
@@ -74,7 +74,12 @@ function Settings() {
         <form action="" className="settingsForm" onSubmit={handleSubmit}>
           <label htmlFor="">Profile Picture</label>
           <div className="settingsPP">
-            <img className="" src={PF + user.profilePic} alt="" />
+            {/* IF THE PICTURED HAS BEEN SELECTED THEN SHOW THE NEW PIC OTHERWISE THE OLD ONES */}
+            {file ? (
+              <img className="" src={URL.createObjectURL(file)} />
+            ) : (
+              <img className="" src={PF + user.profilePic} alt="" />
+            )}
             <label htmlFor="fileInput">
               <i class="settingsPPIcon far fa-user-circle"></i>
             </label>

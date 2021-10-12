@@ -253,4 +253,11 @@ To Get all posts, or a categorical post that belong to one group or a user. we u
   - Defined three hooks = [username, email, password], each will be setting a their correspondent values.
   - Defined the static path for those uploaded-pictures storage that we initiated in the api/index.js....   app.use("/images", express.static(path.join(__dirname, "/images")));
   - Add filename, file itself which is the profilePic to the form and upload it using axios.post("http://localhost:5000/api/upload", data);
-  - Add the filename of the uploaded file's name to the object consists of {username, email, password} and then pass this object to be updated through PUT method using --> axios.put("http://localhost:5000/api/users/" + user._id, updatedUser)
+  - Add the filename of the uploaded file's name to the object consists of {username, email, password} and then pass this object to be updated through PUT method using --> axios.put("http://localhost:5000/api/users/" + user._id, updatedUser).
+  - Once they are updated, now it is a time to fetche the data again. we dont fetch the data, we are dispatchinG login credentials, just change the user credential who is logged in. 
+  - As we dispatch the login we at the same time set the localStorage.setItem with the new data. so the user will get changed.
+  - If we dont dispatch login we cannot set/update user credentials. We have to first set/update and then replace those updated credentials with the old ones in the localStorage.
+  - For the profile picture update. If user selected a picture then show the selected picture otherwise show the old ones. For the new one the source should be an object where it creates a URL for the selected file(picture).
+  - However if the file is not selected which means we dont wanna change it then the source of that image will be uploaded picture directory + the picture id which is stored in the user credentials.
+  - 
+
