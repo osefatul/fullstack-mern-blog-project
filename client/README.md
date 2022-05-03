@@ -1,6 +1,6 @@
 # Full-Stack MERN Blog
 
-## Creating Blog from the Scratch
+## Creating Blog from Scratch
 
 We have use ReactJs, NodeJs, Node-Api, React Hooker and many more packages.
 
