@@ -2,7 +2,7 @@
 
 ## Creating Blog from Scratch
 
-We have use ReactJs, NodeJs, Node-Api, React Hooker and many more packages.
+We used ReactJs, NodeJs, Node-Api, React Hooker and many more technologies.
 
 - We have created first multiple pages, as each page is composed of react component
   - #### Write: this page will be used in order to write a post.
