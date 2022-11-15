@@ -1,5 +1,8 @@
 # Full-Stack MERN Blog
 
+### Intro
+Blog is fullstack MERN application where users/admins have the rights to post, edit and delete posts. A common user is restricted to their own property whereas admins have permission to elevate and control users data as well. 
+
 ## Creating Blog from Scratch
 
 We used ReactJs, NodeJs, Node-Api, React Hooker and many more technologies.
